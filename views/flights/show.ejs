@@ -1,0 +1,55 @@
+<%- include('../partials/header.ejs') %>
+<% console.log(tickets) %>
+
+<h3>Flight# <%= flight.flightNo %></h3>
+<ul>
+    <li>Airport: <%= flight.airport %></li>
+    <li>Airline: <%= flight.airline %></li>
+    <li>Departure Date: <%= flight.departs %></li>
+    <% if (flight.destinations.length) { %>
+        <% flight.destinations.forEach(function(dest) { { %>
+            <li>Airport: <%= dest.airport %></li>
+            <li>Arrival: <%= dest.arrival %></li>
+            <% } %>
+    <% })} %>
+
+    <h5>tickets rendered</h5>
+    <% if (tickets.length) { %>
+        <% tickets.forEach(function(ticket){ %>
+            <li>seat: <%= ticket.seat %></li>
+            <li>price: <%= ticket.price %></li>
+            <br>
+            <% })} %>
+</ul>
+<br> 
+<form method="GET" action="/flights/tickets/<%= flight._id %>"">
+    <button type="submit">Generate Ticket?</button>
+</form>
+
+
+<br><br><h4>Add Destination</h4>
+<form id="destinations" method="POST" action="/flights/<%= flight._id %>/destinations">
+    <label>Airport</label>
+    <select name="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+    </select>
+
+    <br>
+    <label>Arrival</label>
+    <select name="arrival">
+        <% let dayReference = new Date() %>
+        <% for (let i = 0; i < 7; i++) { %>
+            <% dayReference.setDate(dayReference.getDate() + 1) %>
+            <option value="<%= dayReference %>"><%= dayReference %></option>
+        <% } %>
+    </select>
+    <br>
+    <input type="submit" value="Add Destination">
+
+</form>
+
+<%- include('../partials/footer.ejs') %>

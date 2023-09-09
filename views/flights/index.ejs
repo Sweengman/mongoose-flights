@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs') %>
+
+
+
+<% for (let flight of flights) { %>
+<ul>
+    <li>
+        <%= flight.airport %> &nbsp|&nbsp
+        Flight#: <%= flight.flightNo %> &nbsp
+        <a href="/flights/<%= flight._id %>">details</a>
+    </li>
+</ul>
+<% } %>
+
+</ul>
+
+<%- include('../partials/footer.ejs') %>

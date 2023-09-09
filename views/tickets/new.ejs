@@ -1,0 +1,48 @@
+<%- include('../partials/header.ejs') %>
+
+<form action="/flights/<%= flightId %>/tickets" method="POST">
+    <span>flight: <%= flightId %></span>
+    <select name="flight" id="flight"><option value="<%= flightId %>"><%= flightId %></option></select>
+    <br><br>
+    <div>seat: <select name="seat" id="seat"><option>See Below</option></select></div>
+    <select name="letter" id="">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+        <option value="d">d</option>
+        <option value="e">e</option>
+        <option value="f">f</option>
+    </select>
+    <select name="number" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+    <br> <br>
+
+    <div>Section (leave blank if N/A)</div> 
+    <select name="section" id="">
+        <option >-</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+    <br> <br>
+
+    <div>price</div>
+    <input type="text" name="price">
+    <button type="submit">Submit</button>
+</form>
+<%- include('../partials/footer.ejs') %>

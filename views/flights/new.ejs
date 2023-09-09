@@ -1,0 +1,35 @@
+<%- include('../partials/header.ejs') %>
+
+<form action="/flights" method="POST">
+    <label>Airline:</label>
+    <input type="text" name="airline">
+    <br>
+    <label>Airport:</label>
+    <select name="Airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+    </select>
+    <br>
+
+    <label>flightNo:</label>
+    <input type="text" name="flightNo">
+    <br>
+
+    <select name="departs">
+        <% let dayReference = new Date() %>
+        <option value="<%= dayReference %>"><%= dayReference %></option>
+        <% for (let i = 0; i < 6; i++) { %>
+            <% dayReference.setDate(dayReference.getDate() + 1) %>
+            <option value="<%= dayReference %>"><%= dayReference %></option>
+        <% } %>
+    </select>
+    <br>
+    <input type="submit" value="Add Flight">
+</form>
+
+
+
+<%- include('../partials/footer.ejs') %>
